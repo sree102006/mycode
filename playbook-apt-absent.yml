@@ -1,0 +1,12 @@
+--- 
+- name: Removing figlet package
+  hosts: planetexpress
+  connection: ssh
+  gather_facts: true
+
+  tasks: 
+  - name: Remove package 
+    apt:
+      name: figlet
+      state: absent
+    become: true  

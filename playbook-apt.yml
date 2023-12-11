@@ -1,0 +1,12 @@
+---
+- name: First playbook
+  hosts: planetexpress:!farnsworth
+  connection: ssh 
+  gather_facts: true
+  
+  tasks:
+  - name: using apt module
+    apt:
+      name: figlet
+      state: present
+    become: yes
