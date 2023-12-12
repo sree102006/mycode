@@ -1,0 +1,3 @@
+[localfacts]
+pkgname = samba
+srvc = smb

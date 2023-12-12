@@ -1,0 +1,29 @@
+---
+- name: Install custom facts
+  hosts: web
+  vars:
+    remote_dir: /etc/ansible/facts.d
+    facts_file: customfacts.fact
+  tasks:
+  - name: Create Facts Dir on Managed Hosts
+    file:
+      path: "{{ remote_dir }}"
+      state: directory
+      recurse: yes
+  - name: Copy Contents to Facts file
+    copy:
+      src: "{{ facts_file }}"
+      dest: "{{ remote_dir }}"
+
+- name: Install Samba Server with Custom Facts
+  hosts: fileservers
+  tasks:
+  - name: Install SMB
+    package:
+      name: "{{ ansible_local.customfacts.localfacts.pkgname }}"
+      state: present
+  - name: Start SMB Service
+    service:
+      name: "{{ ansible_local.customfacts.localfacts.srvc }}"
+      state: started
+      enabled: yes
