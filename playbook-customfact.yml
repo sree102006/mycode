@@ -12,7 +12,3 @@
        state: directory
        mode: 777
        recurse: yes
-
-   - name: use shell module with wildcarding
-     shell: echo $HOME >> ~/output/path.txt
-
