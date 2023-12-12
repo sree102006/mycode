@@ -1,6 +1,6 @@
 ---
 - name: Install httpd
-  hosts: hqdev1.tekneed.com
+  hosts: fry
   tasks:
     - name: Install httpd
       yum:

@@ -16,7 +16,8 @@
       dest: "{{ remote_dir }}"
 
 - name: Install Samba Server with Custom Facts
-  hosts: fileservers
+  hosts: web
+  become: yes
   tasks:
   - name: Install SMB
     package:
