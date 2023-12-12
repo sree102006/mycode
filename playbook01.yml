@@ -1,0 +1,72 @@
+---
+# Learning about Playbooks
+- name: bootstrapping and new user creation
+  hosts: raiders        # our group in our inventory
+  gather_facts: no
+
+  vars:
+    newuser1: 
+      - marian
+      - seeni
+      - Lakshmi
+    newuser2: 
+      - belloq
+      - seeni
+      - Lakshmi
+    newuser3: 
+      - willie
+      - seeni
+      - Aneesh  
+    newuser4: 
+      - elsa
+      - Rithvikaa
+      - Lakshmi
+
+  tasks:
+  # use the raw module
+  - name: update apt with latest repo info
+    raw: "apt update -y"
+    become: yes
+
+  - name: install py3 and pip3 with ansible raw
+    raw: "apt install -y python3-pip"
+    become: yes
+
+  - name: create new group
+    group:
+      name: indymovies
+      state: present
+    become: yes
+
+  - name: Add newuser1 to target hosts
+    user:
+      name: "{{ item }}"
+      state: present
+      group: indymovies
+    become: yes
+    loop: "{{ newuser1 }}"
+
+  - name: Add newuser2 to target hosts   
+    user:
+      name: "{{ item }}"
+      state: present
+      group: indymovies
+    become: yes
+    loop: "{{ newuser2 }}"
+
+  - name: add newuser3 to target hosts
+    user:
+      name: "{{ item }}"
+      state: present
+      group: indymovies
+    become: yes
+    loop: "{{ newuser3 }}"
+
+  - name: add newuser4 to target hosts
+    user:
+      name: "{{ item }}"
+      state: present
+      group: indymovies
+    become: yes
+    loop: "{{ newuser4 }}"
+
