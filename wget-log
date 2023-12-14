@@ -1,0 +1,6 @@
+--2023-12-13 22:42:54--  https://www.random.org/integers/?num=1
+Resolving www.random.org (www.random.org)... 172.66.43.252, 172.66.40.4, 2606:4700:3108::ac42:2804, ...
+Connecting to www.random.org (www.random.org)|172.66.43.252|:443... connected.
+HTTP request sent, awaiting response... 503 Service Unavailable
+2023-12-13 22:42:54 ERROR 503: Service Unavailable.
+
