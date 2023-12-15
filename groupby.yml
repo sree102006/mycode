@@ -1,0 +1,20 @@
+- name: talk to all hosts just so we can learn about them
+  hosts: all
+  tasks:
+    - name: Classify hosts depending on their OS distribution
+      group_by:
+        key: os_{{ ansible_facts['distribution'] }}
+
+ # now just on the CentOS hosts...
+
+- hosts: os_CentOS
+  gather_facts: False
+  tasks:
+    - name: server name
+      command: "uname -n"
+
+- hosts: os_Ubuntu
+  gather_facts: False
+  tasks: 
+    - name: Ubuntu servers
+      command: "uname -n"
